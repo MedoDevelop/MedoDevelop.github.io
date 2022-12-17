@@ -1,13 +1,35 @@
 .index {
 	margin: 15%;
 	margin-top: 5%;
-	background-color: blue;
 }
 
 .bordered {
-	
+	border: 2px solid black;
 }
 
 .bordered .ronded {
-
+	border-radius: 20px;
+	border: 2px solid black;
 }
+
+p {
+	text-align: justify;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	padding: 3%;
+	background-color: black;
+	text-decoration-color: white;
+}
+
+button:hover {
+	padding: 3%;
+	background-color: white;
+	text-decoration-color: black;
+}
+
+
