@@ -12,24 +12,55 @@
 	border: 2px solid black;
 }
 
+
 p {
 	text-align: justify;
+	font-size: 20px;
 }
 
-a {
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.nav {
+	font-size: 25px;
+}
+ul.nav li{
+	float: left;
+}
+
+ul.nav li a{
 	text-decoration: none;
+	color: white;
+	display: block;
+	padding: 22px 20px;
+	margin: 2px;
+}
+
+.active{
+	background-color: #444;
+}
+
+ul.nav li a:hover:not(.active){
+	background-color: green;
+}
+
+ul.nav li a b{
+	color: blue;
 }
 
 button {
 	padding: 3%;
 	background-color: black;
-	text-decoration-color: white;
+	color: white;
 }
 
 button:hover {
 	padding: 3%;
 	background-color: white;
-	text-decoration-color: black;
+	color: black;
 }
-
-
