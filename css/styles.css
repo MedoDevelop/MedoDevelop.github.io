@@ -3,19 +3,29 @@
 	margin-top: 5%;
 }
 
-.bordered {
-	border: 2px solid black;
+.card {
+	margin: 10%;
+	margin-top: 4%;
+	margin-bottom: 4%;
+	padding: 1%;
+	border: 3px solid black;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.bordered .ronded {
+.cardronded {
+	margin: 10%;
+	margin-top: 6%;
+	margin-bottom: 1%;
+	padding: 1%;
 	border-radius: 20px;
-	border: 2px solid black;
+	border: 3px solid black;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
 p {
 	text-align: justify;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 ul.nav {
@@ -24,10 +34,14 @@ ul.nav {
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
 }
 
 ul.nav {
-	font-size: 25px;
+	font-size: 20px;
 }
 ul.nav li{
 	float: left;
@@ -54,13 +68,38 @@ ul.nav li a b{
 }
 
 button {
-	padding: 3%;
+	padding: 1%;
 	background-color: black;
 	color: white;
 }
 
 button:hover {
-	padding: 3%;
+	padding: 1%;
 	background-color: white;
 	color: black;
+}
+
+.skill {
+	display: block;
+	margin: 2px;
+	padding: 5px;
+	color:white;
+	border-radius: 10px;
+	float: left;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.contact{
+	float: left;
+	size: 40px;
+}
+
+.contact img{
+	float: left;
+	size: 40px;
+}
+
+.contact p{
+	float: right;
+	size: 40px;
 }
