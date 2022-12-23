@@ -3,27 +3,19 @@
 	margin-top: 5%;
 }
 
-.card {
+.box {
 	margin: 15%;
 	margin-top: 10%;
 	padding: 1%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
+
 div {
 	background-color: white;
 }
 
-#r{
-	width: 50%;
-	float: right;
-	margin: 8%px;
-}
-
-#l{
-	width: 50%;
-	float: left;
-}
 
 #contact {
 	margin-top: 20%;
