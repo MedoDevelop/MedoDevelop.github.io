@@ -14,7 +14,7 @@ function skilcol(){
 	}
 }
 
-function copiemail(value){
+function copie(value){
 	navigator.clipboard.writeText(value);
 	alert('le mail a été copié !')
 }
