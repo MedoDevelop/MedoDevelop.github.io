@@ -105,3 +105,16 @@ body {
 footer p{
 	color: white;
 }
+
+#ligne2 {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+
+#ligne2 .ligne2i {
+	width: 48%;
+	display: inline-block;
+	float: left;
+	margin: 1%;
+}
