@@ -5,30 +5,12 @@
 
 .box {
 	margin: 15%;
-	margin-top: 10%;
+	margin-top: 15%;
 	padding: 1%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
-
 
 div {
-	background-color: white;
-}
-
-
-#contact {
-	margin-top: 20%;
-}
-
-.cardronded {
-	margin: 15%;
-	margin-top: 12%;
-	margin-bottom: 1%;
-	padding: 1%;
-	border-radius: 20px;
-	border: 3px solid black;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	background-color: white;
 }
 
@@ -56,6 +38,7 @@ ul.nav {
 ul.nav {
 	font-size: 18px;
 }
+
 ul.nav li{
 	float: left;
 }
@@ -97,28 +80,22 @@ button:hover {
 }
 
 .skill {
-	display: block;
-	margin: 5px;
-	padding: 7px;
+	display: inline-block;
+	margin: 3px;
+	padding: 5px;
 	color:white;
 	border-radius: 10px;
-	float: left;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.contact{
-	float: left;
-	size: 40px;
+.contactl div span{
+	background-color: blue;
+	text-align:center;
 }
 
-.contact div.img{
-	float: left;
-	size: 40px;
-}
-
-
-.contact div button{
-	float: right;
+.contactl div {
+	display: inline-block;
+	margin: 10px;
 }
 
 body {

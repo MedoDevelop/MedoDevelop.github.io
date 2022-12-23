@@ -16,5 +16,5 @@ function skilcol(){
 
 function copie(value){
 	navigator.clipboard.writeText(value);
-	alert('le mail a été copié !')
+	alert('la valeur suivante a été copié dans le presse papier : '+value);
 }
