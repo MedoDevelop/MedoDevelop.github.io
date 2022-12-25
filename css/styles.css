@@ -4,8 +4,9 @@
 }
 
 .box {
-	margin-top:150px;
-	padding: 2%;
+	margin-top: 150px;
+	margin-bottom: 150px;
+	padding: 1%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -61,13 +62,14 @@ ul.nav li a b{
 	color: lightblue;
 }
 
-button {
+.mybtn {
 	padding: 1%;
 	background-color: black;
+	border-radius: 25px;
 	color: white;
 }
 
-button:hover {
+.mybtn:hover {
 	padding: 1%;
 	background-color: white;
 	color: black;
@@ -117,33 +119,33 @@ footer p{
 	margin: 1%;
 }
 
-.xpline .xpimg{
+.line .img{
 	vertical-align: top;
 	display: inline-block;
 	width: 120px;
 	height: 120px;
 	margin: 0;
 	padding: 0;
-	border-radius: 25%;
+	border-radius: 20%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.xpline .xpdesc{
+.line .desc{
 	vertical-align: top;
 	text-align: justify;
 	display: inline-block;
-	max-width: calc(100% - 200px);
+	max-width: calc(100% - 150px);
 	margin: 0;
 	padding: 10px;
 }
 
-.xpline{
+.line{
 	width: 100%;
 	margin-bottom: 40px;
 	padding: 0;
 	text-align: left;
 }
 
-.xpdesc h3{
+.desc h3{
 	text-align: left;
 }
