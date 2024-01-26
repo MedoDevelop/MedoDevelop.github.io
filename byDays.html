@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="staticjs/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body id="body">
+    <center>
+        <h2 style="padding: 50px;">Évolution journalière</h2>
+    </center>
+    <script src="staticjs/app.js"></script>
+    <script>
+        /* Elaboration de la page 
+        * l'objectif est d'afficher toute les journe de précense et le graffe on limitera 40 jours, les 40 max avant et aujourd'huit
+        */
+        function comparerParDate(objet1, objet2) {
+            return objet2.date - objet1.date;
+        }
+
+        function dateToStr(date) {
+            return date.getDate().toString().padStart(2, '0') + "/" + (date.getMonth() + 1).toString().padStart(2, '0') + "/" + date.getFullYear()
+        }
+
+        function pligne(text) {
+            return "<p>" + text + "</p>";
+        }
+        session = SessionInfo.getSession();
+        let list = JourneePresence.getAllJournees();
+        //list = [new Date(2024, 1, 17), new Date(2024, 4, 17), new Date(2024, 3, 17), new Date(2024, 2, 17), new Date(2024, 5, 17), new Date(2024, 0, 20)]
+        list.sort(comparerParDate);
+        if (list.length >= 40) {
+            list.slice(0, 40);
+        }
+        list.reverse();
+        let myLabels = [];
+        let myDatas = [];
+        let heureTot = 0; //Nombre d'heure effectué
+        let h = 0;
+        list.forEach(el => {
+            h = Number.parseFloat(el.getHeureTotaleJournee());
+            console.log(h)
+            heureTot = heureTot + h;
+            myLabels.push(dateToStr(el.date));
+            myDatas.push(h);
+        });
+        heureTot = heureTot.toFixed(2);
+        //Moyenne d'heure
+        let moy = 0;
+        if (myDatas.length != 0) {
+            moy = Number.parseFloat((heureTot / myDatas.length).toFixed(2));
+        }
+        /*
+        myLabels = ['17/01/2024', '18/01/2024', '19/01/2024', '20/01/2024', '21/01/2024'];
+        myDatas = [7.68, 7, 4, 7, 6];
+        myDatas.slice(0, 2);
+        myLabels.slice(0, 2);
+        console.log(list);*/
+    </script>
+    <div class="row align-items-start">
+        <div class="col">
+            <div style="width: 1000px;height: 1000px;margin-bottom: 0px;padding-bottom: 0px;">
+                <div class="box">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col text-center" style="margin-top: 80px;" id="detail">
+
+        </div>
+    </div>
+    <script>
+        let detail = document.getElementById('detail');
+        let parath = pligne(session.prenomUser + ' ' + session.nomUser + ' de ' + session.organisation);
+        parath += pligne("En " + myDatas.length + " jours");
+        parath += pligne("Depuis le " + myLabels[myLabels.length - 1] + " vous avez effectué un total de " + heureTot + " heures au totale");
+        parath += pligne("Vous faites une moyenne de " + moy + " heures");
+        detail.innerHTML = parath;
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script>
+        const ctx = document.getElementById("myChart");
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: myLabels,
+                datasets: [{
+                    label: 'Évolution journalière',
+                    data: myDatas,
+                    tension: 0,//Tension affecte la courbure des ligne par raport au points de passage, 0 pour des ligne droites
+                    backgroundColor: [
+                        'rgba(50,20,200,0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(50,20,200,1)'
+                    ],
+                    borderWidth: 5
+                },]
+            },
+            options: {
+                layout: {
+                    padding: 0
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
