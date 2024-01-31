@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="staticjs/bootstrap.bundle.min.js"></script>
+    <title>TimedJob </title>
+
+</head>
+<!--
+    Menus a créer :
+    - EditSessionMenu : Le menu qui permet d'édité la session de l'utilisateur
+    - EditJourneePresence : Le menu qui permet d'édité une journee pressence
+    - StatististicsMenu : Ce menu peremttra d'avoir un bilan basé sur des chifre
+            - p1 : Nombre d'heure semaine actuelle / heure semaine | nb heure par mois / heures mensuel
+            - p2 : Un grafique hebdomadaire
+            - p3 : Un grafique mensuel
+            - p4 : Liste de toutes les journées de presence, filtre par semaine, par mois, si aucun filtre -> grouppement par semaine, et mois
+-->
+
+<body style="background-color: #B4D4FF;">
+    <script src="staticjs/app.js">
+
+    </script>
+    <div style="margin: 70px;">
+        <section id="EditSessionMenu">
+
+            <h2>Votre session</h2>
+            <hr />
+
+            <div class="mb-3 row">
+                <label for="esmNom" class="col-sm-2 col-form-label">Votre nom</label>
+                <div class="col-sm-10">
+                    <input type="text" placeholder="Nom" class="form-control" id="esmNom" minlength="3" required />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="esmPrenom" class="col-sm-2 col-form-label">Votre prenom</label>
+                <div class="col-sm-10">
+                    <input type="text" placeholder="Prenom" class="form-control" id="esmPrenom" minlength="3"
+                        required />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="esmOrga" class="col-sm-2 col-form-label">Libellé de l'organisation</label>
+                <div class="col-sm-10">
+                    <input type="text" placeholder="Oraganisation" class="form-control" id="esmOrga" minlength="3"
+                        required />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="esmHebdo" class="col-sm-2 col-form-label">Heures hebdomadaire</label>
+                <div class="col-sm-10" style="max-width: 100px;">
+                    <input type="number" placeholder="35" class="form-control" id="esmHebdo" min="0" max="45"
+                        minlength="3" value="0" required />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <button class="btn btn-primary" onclick="app.valideSessionEdit()">Valider</button>
+            </div>
+        </section>
+
+        <section id="EditJourneePresence">
+            <div class="mb-3 row" style="">
+                <button class="btn btn-primary" onclick="app.openSessionMenu()">Session</button>
+            </div>
+            <div class="mb-3 row" style="margin-top: 10px;">
+                <button class="btn btn-primary" onclick="app.openStatisticMenu()">Statisques</button>
+            </div>
+            <hr/>
+            <div class="row align-items-start">
+            <div class="col">
+            
+            <h2 id="date">{ Date à vernir }</h2>
+            <button class="btn btn-primary" style="max-width: 450px;" onclick="app.majAuto()">MAJ rapide</button>
+            <div class="row" style="margin-top: 10px;">
+                <label for="" class="col-sm-2 col-form-label">Heure d'arrivée</label>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpHARR" class="form-control" placeholder="Heure" value="0"
+                        aria-label="Heure">
+                </div>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpMARR" class="form-control" placeholder="Minute" value="0"
+                        aria-label="Minute">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <label for="" class="col-sm-2 col-form-label">Heure de pause</label>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpHPAU" class="form-control" placeholder="Heure" value="0"
+                        aria-label="Heure">
+                </div>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpMPAU" class="form-control" placeholder="Minute" value="0"
+                        aria-label="Minute">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <label for="" class="col-sm-2 col-form-label">Heure de fin de pause</label>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpHFPA" class="form-control" placeholder="Heure" value="0"
+                        aria-label="Heure">
+                </div>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpMFPA" class="form-control" placeholder="Minute" value="0"
+                        aria-label="Minute">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <label for="" class="col-sm-2 col-form-label">Heure de départ</label>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpHDEP" class="form-control" placeholder="Heure" value="0"
+                        aria-label="Heure">
+                </div>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpMDEP" class="form-control" placeholder="Minute" value="0"
+                        aria-label="Minute">
+                </div>
+            </div>
+            <div class="mb-3 row" style="margin-top: 10px;">
+                <button class="btn btn-primary" onclick="app.valideJourneeEdit()">Valider</button>
+            </div>
+            <p id="libHeureJour"></p>
+            <p id="err" style="color:red;"></p>
+        </div>
+        <div class="col">
+            <h2>Date à modifier</h2>
+                <div class="col" style="max-width: 135px;">
+                    <input type="date" id="dateSel" class="form-control"
+                        aria-label="Date">
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                
+                <label for="" class="col-sm-2 col-form-label">Heure d'arrivée</label>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpHARRs" class="form-control" placeholder="Heure" value="0"
+                        aria-label="Heure">
+                </div>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpMARRs" class="form-control" placeholder="Minute" value="0"
+                        aria-label="Minute">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <label for="" class="col-sm-2 col-form-label">Heure de pause</label>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpHPAUs" class="form-control" placeholder="Heure" value="0"
+                        aria-label="Heure">
+                </div>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpMPAUs" class="form-control" placeholder="Minute" value="0"
+                        aria-label="Minute">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <label for="" class="col-sm-2 col-form-label">Heure de fin de pause</label>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpHFPAs" class="form-control" placeholder="Heure" value="0"
+                        aria-label="Heure">
+                </div>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpMFPAs" class="form-control" placeholder="Minute" value="0"
+                        aria-label="Minute">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <label for="" class="col-sm-2 col-form-label">Heure de départ</label>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpHDEPs" class="form-control" placeholder="Heure" value="0"
+                        aria-label="Heure">
+                </div>
+                <div class="col" style="max-width: 100px;">
+                    <input type="number" id="ejpMDEPs" class="form-control" placeholder="Minute" value="0"
+                        aria-label="Minute">
+                </div>
+            </div>
+            <div class="mb-3 row" style="margin-top: 10px;">
+                <button class="btn btn-primary" onclick="app.valideJourneeSel()">Valider</button>
+            </div>
+
+        </div>
+    </div>
+        </section>
+
+        <section id="StatististicsMenu">
+            <div class="mb-3 row" style="">
+                <button class="btn btn-primary" onclick="app.openJourneeMenu()">Édition</button>
+            </div>
+            <hr />
+            <div class="mb-3 row" style="margin-top: 30px;">
+                <button class="btn btn-primary" onclick="app.show(1)">Liste par jours</button>
+            </div>
+            <div class="mb-3 row" style="">
+                <button class="btn btn-primary" onclick="app.show(2)">Liste par semaines</button>
+            </div>
+            <div class="mb-3 row" style="">
+                <button class="btn btn-primary" onclick="app.show(3)">Liste par mois</button>
+            </div>
+            <hr />
+            <button class="btn btn-primary" style="background-color: red;" onclick="app.suprDmd()">Suppression</button>
+        </section>
+        <script>app = new App();</script>
+    </div>
+
+</body>
+
+</html>
